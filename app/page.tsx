@@ -1049,24 +1049,27 @@ function RocketLaunchScene() {
       vy: number;
       r: number;
       life: number;
+      grow: number;
     };
 
-    const smoke: SmokeParticle[] = Array.from({ length: 48 }, () => ({
+    const smoke: SmokeParticle[] = Array.from({ length: 84 }, () => ({
       x: 0,
       y: 0,
       vx: 0,
       vy: 0,
       r: 0,
       life: 0,
+      grow: 0,
     }));
 
     const resetSmoke = (p: SmokeParticle, x: number, y: number) => {
-      p.x = x + (Math.random() - 0.5) * 28;
-      p.y = y + Math.random() * 10;
-      p.vx = (Math.random() - 0.5) * 1.4;
-      p.vy = 1.8 + Math.random() * 2.5;
-      p.r = 10 + Math.random() * 18;
-      p.life = 1;
+      p.x = x + (Math.random() - 0.5) * 18;
+      p.y = y + Math.random() * 16;
+      p.vx = (Math.random() - 0.5) * 0.7 + 0.18;
+      p.vy = 3.8 + Math.random() * 3.2;
+      p.r = 8 + Math.random() * 12;
+      p.life = 0.98;
+      p.grow = 0.22 + Math.random() * 0.28;
     };
 
     const drawRocket = (x: number, y: number, scale: number, bob: number) => {
@@ -1181,7 +1184,7 @@ function RocketLaunchScene() {
 
       if (engaged) {
         launched = true;
-        launchProgress = Math.min(1, launchProgress + 0.0046);
+        launchProgress = Math.min(1, launchProgress + 0.0072);
       }
 
       if (!launched) {
@@ -1206,18 +1209,20 @@ function RocketLaunchScene() {
       smoke.forEach((p) => {
         if (p.life <= 0 && rocketVisible) resetSmoke(p, rocketX, plumeBaseY);
 
-        p.x += p.vx * (engaged ? 1.5 : 0.9);
-        p.y += p.vy * (engaged ? 1.75 : 1.1);
-        p.life -= engaged ? 0.024 : 0.018;
+        p.x += p.vx * (engaged ? 1.25 : 0.8);
+        p.y += p.vy * (engaged ? 1.55 : 1);
+        p.r += p.grow;
+        p.life -= engaged ? 0.016 : 0.012;
 
-        const alpha = Math.max(0, p.life * (engaged ? 0.44 : 0.28));
+        const alpha = Math.max(0, p.life * (engaged ? 0.34 : 0.22));
         const smokeGrad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-        smokeGrad.addColorStop(0, `rgba(255,220,150,${alpha})`);
-        smokeGrad.addColorStop(0.45, `rgba(160,120,90,${alpha * 0.75})`);
+        smokeGrad.addColorStop(0, `rgba(255,230,180,${alpha})`);
+        smokeGrad.addColorStop(0.35, `rgba(225,176,96,${alpha * 0.88})`);
+        smokeGrad.addColorStop(0.68, `rgba(144,108,78,${alpha * 0.52})`);
         smokeGrad.addColorStop(1, 'rgba(30,22,18,0)');
         ctx.fillStyle = smokeGrad;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.ellipse(p.x, p.y, p.r * 0.88, p.r * 1.28, 0, 0, Math.PI * 2);
         ctx.fill();
       });
 
