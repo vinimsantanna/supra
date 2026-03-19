@@ -42,12 +42,9 @@ import {
 const WHATSAPP_URL =
   'https://api.whatsapp.com/send/?phone=5573988548309&text=Quero%20multiplicar%20meu%20faturamento!';
 const INSTAGRAM_URL = 'https://instagram.com/supra.midia';
-const LOGO_URL =
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/5ea9d4d2201d708523db825fbfa27b01c8891005/supra-logodourada.png';
-const FOUNDER_VINI_URL =
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/401c646798338c82f44d45cd63e2535373e1aa7c/foto-vinicius.jpg';
-const FOUNDER_EVE_URL =
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/401c646798338c82f44d45cd63e2535373e1aa7c/foto-evellin.JPEG';
+const LOGO_URL = '/assets/brand/supra-logo.webp';
+const FOUNDER_VINI_URL = '/assets/founders/vinicius.webp';
+const FOUNDER_EVE_URL = '/assets/founders/evellin.webp';
 
 const founders = [
   {
@@ -144,27 +141,25 @@ const services = [
 const mediaVideos = [
   {
     title: 'Vietnam Hair',
-    poster:
-      'https://raw.githubusercontent.com/vinimsantanna/img-evo/c520104fc7bc097d1a7fef515e55067363b0caed/_DSC9965.jpg',
-    url: 'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/video-vietnan-hair%20(2).mp4',
+    poster: '/assets/portfolio/poster-vietnam.webp',
+    url: '/assets/videos/video-vietnam-hair.mp4',
   },
   {
     title: 'Intermed',
-    poster:
-      'https://raw.githubusercontent.com/vinimsantanna/img-evo/167ad5d91249c713086d468e09027be281fa06c2/foto-regiane-querino.JPG',
-    url: 'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/video-intermed.mp4',
+    poster: '/assets/portfolio/poster-intermed.webp',
+    url: '/assets/videos/video-intermed.mp4',
   },
 ] as const;
 
 const mediaImages = [
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-semper.PNG',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-pattiara.jpeg',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-naturally.JPEG',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dra-rita.JPEG',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dr-paulo2.jpeg',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dr-paulo.jpeg',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dr-jo%C3%A3o2.jpeg',
-  'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dr-jo%C3%A3o.jpeg',
+  '/assets/gallery/foto-semper.webp',
+  '/assets/gallery/foto-pattiara.webp',
+  '/assets/gallery/foto-naturally.webp',
+  '/assets/gallery/foto-dra-rita.webp',
+  '/assets/gallery/foto-dr-paulo-2.webp',
+  '/assets/gallery/foto-dr-paulo.webp',
+  '/assets/gallery/foto-dr-joao-2.webp',
+  '/assets/gallery/foto-dr-joao.webp',
 ] as const;
 
 const plans = [
@@ -212,24 +207,21 @@ const testimonials = [
   {
     name: 'Dr. Paulo Acácio',
     role: 'Implantodontista',
-    avatar:
-      'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-dr-paulo.jpeg',
+    avatar: '/assets/gallery/foto-dr-paulo.webp',
     quote:
       'Entregaram o que eu precisava, meta batida em tempo recorde. E se precisar de referência pode mandar qualquer possível cliente falar comigo!',
   },
   {
     name: 'Regiane Querino',
     role: 'Clínica Intermed',
-    avatar:
-      'https://raw.githubusercontent.com/vinimsantanna/img-evo/167ad5d91249c713086d468e09027be281fa06c2/foto-regiane-querino.JPG',
+    avatar: '/assets/portfolio/poster-intermed.webp',
     quote:
       'Me entregaram tudo o que realmente estava precisando, pontualidade, responsabilidade, conteúdos riquíssimos...',
   },
   {
     name: 'Pattiara Freitas',
     role: 'Fisioterapeuta',
-    avatar:
-      'https://raw.githubusercontent.com/vinimsantanna/img-evo/46690c2242a496bc75b171dc8950f1ffaed0c619/foto-pattiara.jpeg',
+    avatar: '/assets/gallery/foto-pattiara.webp',
     quote:
       'Trabalhar com a Supra foi uma das melhores decisões que tomamos para o nosso negócio. Desde o início percebemos o profissionalismo, a criatividade e, principalmente, a estratégia por trás de cada ação. Não é só sobre marketing, é sobre entender a marca, posicionar da forma certa e gerar resultados de verdade. A equipe é atenciosa, comprometida e sempre traz ideias que fazem a diferença.',
   },
