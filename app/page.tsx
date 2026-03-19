@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { BorderRotate } from '@/components/ui/animated-gradient-border';
 import {
   ArrowRight,
   BadgeCheck,
@@ -403,27 +404,39 @@ function Founders() {
         />
         <div className="mt-16 space-y-12">
           {founders.map((f) => (
-            <div
+            <BorderRotate
               key={f.name}
-              className="grid items-center gap-8 rounded-[34px] border border-white/10 bg-white/[0.03] p-6 shadow-soft backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]"
+              animationMode="rotate-on-hover"
+              animationSpeed={2.4}
+              borderWidth={1.5}
+              borderRadius={34}
+              backgroundColor="rgba(10,10,10,0.9)"
+              gradientColors={{
+                primary: '#2f250b',
+                secondary: '#d4af37',
+                accent: '#f4df9f',
+              }}
+              className="overflow-hidden shadow-soft"
             >
-              <div>
-                <div className="mx-auto w-full max-w-[280px] md:max-w-[320px]">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] border border-gold/20 shadow-[12px_-10px_30px_-8px_rgba(212,175,55,0.3)]">
-                    <img src={f.image} alt={f.name} className="h-full w-full object-cover object-top" />
+              <div className="grid items-center gap-8 p-6 backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]">
+                <div>
+                  <div className="mx-auto w-full max-w-[280px] md:max-w-[320px]">
+                    <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] border border-gold/20 shadow-[12px_-10px_30px_-8px_rgba(212,175,55,0.3)]">
+                      <img src={f.image} alt={f.name} className="h-full w-full object-cover object-top" />
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-semibold text-gradient-gold">{f.name}</h3>
+                  <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">{f.role}</p>
+                  <div className="mt-6 space-y-4 text-base leading-8 text-muted">
+                    {f.description.map((p) => (
+                      <p key={p}>{p}</p>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-semibold text-gradient-gold">{f.name}</h3>
-                <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">{f.role}</p>
-                <div className="mt-6 space-y-4 text-base leading-8 text-muted">
-                  {f.description.map((p) => (
-                    <p key={p}>{p}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
+            </BorderRotate>
           ))}
         </div>
       </Container>
