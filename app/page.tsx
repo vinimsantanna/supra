@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { BorderRotate } from '@/components/ui/animated-gradient-border';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 import {
   ArrowRight,
   BadgeCheck,
@@ -403,40 +404,41 @@ function Founders() {
           description="Estratégia, posicionamento, performance e conversão tratados como sistema — não como peças soltas tentando parecer sofisticadas."
         />
         <div className="mt-16 space-y-12">
-          {founders.map((f) => (
-            <BorderRotate
-              key={f.name}
-              animationMode="rotate-on-hover"
-              animationSpeed={2.4}
-              borderWidth={1.5}
-              borderRadius={34}
-              backgroundColor="rgba(10,10,10,0.9)"
-              gradientColors={{
-                primary: '#2f250b',
-                secondary: '#d4af37',
-                accent: '#f4df9f',
-              }}
-              className="overflow-hidden shadow-soft"
-            >
-              <div className="grid items-center gap-8 p-6 backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]">
-                <div>
-                  <div className="mx-auto w-full max-w-[280px] md:max-w-[320px]">
-                    <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] border border-gold/20 shadow-[12px_-10px_30px_-8px_rgba(212,175,55,0.3)]">
-                      <img src={f.image} alt={f.name} className="h-full w-full object-cover object-top" />
+          {founders.map((f, index) => (
+            <ScrollReveal key={f.name} delay={index * 120} y={30} scale={0.982}>
+              <BorderRotate
+                animationMode="rotate-on-hover"
+                animationSpeed={2.4}
+                borderWidth={1.5}
+                borderRadius={34}
+                backgroundColor="rgba(10,10,10,0.9)"
+                gradientColors={{
+                  primary: '#2f250b',
+                  secondary: '#d4af37',
+                  accent: '#f4df9f',
+                }}
+                className="overflow-hidden shadow-soft"
+              >
+                <div className="grid items-center gap-8 p-6 backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]">
+                  <div>
+                    <div className="mx-auto w-full max-w-[280px] md:max-w-[320px]">
+                      <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] border border-gold/20 shadow-[12px_-10px_30px_-8px_rgba(212,175,55,0.3)]">
+                        <img src={f.image} alt={f.name} className="h-full w-full object-cover object-top" />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-semibold text-gradient-gold">{f.name}</h3>
+                    <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">{f.role}</p>
+                    <div className="mt-6 space-y-4 text-base leading-8 text-muted">
+                      {f.description.map((p) => (
+                        <p key={p}>{p}</p>
+                      ))}
                     </div>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-3xl font-semibold text-gradient-gold">{f.name}</h3>
-                  <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">{f.role}</p>
-                  <div className="mt-6 space-y-4 text-base leading-8 text-muted">
-                    {f.description.map((p) => (
-                      <p key={p}>{p}</p>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </BorderRotate>
+              </BorderRotate>
+            </ScrollReveal>
           ))}
         </div>
       </Container>
@@ -454,16 +456,18 @@ function Audience() {
           description="Atrair pacientes e contatos qualificados, fortalecer reputação e transformar presença digital em crescimento mensurável."
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {audiences.map((item) => {
+          {audiences.map((item, index) => {
             const Icon = item.icon;
             return (
-              <Card key={item.title} className="h-full">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
-                  <Icon className="h-6 w-6 text-gold" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
-              </Card>
+              <ScrollReveal key={item.title} delay={index * 90}>
+                <Card className="h-full">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
+                    <Icon className="h-6 w-6 text-gold" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
+                </Card>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -478,21 +482,25 @@ function Pain() {
       <Container className="max-w-5xl">
         <SectionHeading eyebrow="O problema" title="Reconhece algum desses cenários?" />
         <div className="mt-14 space-y-4">
-          {painPoints.map((item) => {
+          {painPoints.map((item, index) => {
             const Icon = item.icon;
             return (
-              <div key={item.label} className="flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur transition hover:border-gold/30 hover:bg-white/[0.04]">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/10 text-red-300">
-                  <Icon className="h-5 w-5" />
+              <ScrollReveal key={item.label} delay={index * 75} y={18}>
+                <div className="flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur transition hover:border-gold/30 hover:bg-white/[0.04]">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/10 text-red-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="font-medium text-foreground">{item.label}</span>
                 </div>
-                <span className="font-medium text-foreground">{item.label}</span>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
-        <p className="mt-12 text-center text-xl font-semibold">
-          <span className="text-gradient-gold">Marketing atrai.</span> <span className="text-muted">Atendimento converte.</span>
-        </p>
+        <ScrollReveal delay={160} y={18}>
+          <p className="mt-12 text-center text-xl font-semibold">
+            <span className="text-gradient-gold">Marketing atrai.</span> <span className="text-muted">Atendimento converte.</span>
+          </p>
+        </ScrollReveal>
       </Container>
     </section>
   );
@@ -508,17 +516,19 @@ function Method() {
           description="Quando posicionamento, mídia, conteúdo e atendimento operam juntos, o crescimento deixa de ser episódico e passa a ser estrutural."
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {method.map((item) => {
+          {method.map((item, index) => {
             const Icon = item.icon;
             return (
-              <Card key={item.number} className="h-full">
-                <p className="text-4xl font-semibold text-gold/25">{item.number}</p>
-                <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
-                  <Icon className="h-5 w-5 text-gold" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
-              </Card>
+              <ScrollReveal key={item.number} delay={index * 90}>
+                <Card className="h-full">
+                  <p className="text-4xl font-semibold text-gold/25">{item.number}</p>
+                  <div className="mt-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
+                    <Icon className="h-5 w-5 text-gold" />
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.description}</p>
+                </Card>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -533,16 +543,18 @@ function Services() {
       <Container>
         <SectionHeading eyebrow="Serviços" title="Tudo o que o seu negócio precisa para crescer com clareza" />
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={service.title} className="h-full p-5">
-                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
-                  <Icon className="h-5 w-5 text-gold" />
-                </div>
-                <h3 className="text-base font-semibold text-foreground">{service.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">{service.description}</p>
-              </Card>
+              <ScrollReveal key={service.title} delay={index * 70}>
+                <Card className="h-full p-5">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
+                    <Icon className="h-5 w-5 text-gold" />
+                  </div>
+                  <h3 className="text-base font-semibold text-foreground">{service.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">{service.description}</p>
+                </Card>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -562,21 +574,24 @@ function MediaShowcase() {
           description="O visual certo não serve apenas para ficar bonito. Ele organiza a narrativa da marca, sustenta autoridade e ajuda o paciente a confiar antes mesmo da primeira conversa."
         />
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <Card className="overflow-hidden p-0">
+          <ScrollReveal>
+            <Card className="overflow-hidden p-0">
             <div className="grid gap-4 p-4 md:grid-cols-2">
-              {mediaVideos.map((video) => (
-                <div key={video.title} className="relative overflow-hidden rounded-[24px] border border-gold/15 bg-black">
+              {mediaVideos.map((video, index) => (
+                <ScrollReveal key={video.title} delay={index * 110} y={20} className="relative overflow-hidden rounded-[24px] border border-gold/15 bg-black">
                   <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/30 bg-black/55 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-goldSoft backdrop-blur">
                     <PlayCircle className="h-3.5 w-3.5" />Vídeo
                   </div>
                   <video controls playsInline preload="metadata" poster={video.poster} className="aspect-[4/5] h-full w-full bg-black object-contain">
                     <source src={video.url} type="video/mp4" />
                   </video>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
-          </Card>
-          <Card className="flex h-full flex-col">
+            </Card>
+          </ScrollReveal>
+          <ScrollReveal delay={120} scale={0.98}>
+            <Card className="flex h-full flex-col">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Ativos visuais</p>
             <h3 className="mt-3 text-2xl font-semibold text-foreground">Presença premium não nasce por acidente</h3>
             <p className="mt-3 text-sm leading-7 text-muted">
@@ -588,14 +603,15 @@ function MediaShowcase() {
                 ['Conversão', 'Conteúdo que ajuda o lead a confiar mais rápido e decidir melhor.'],
                 ['Consistência', 'Marca coerente em tráfego, redes sociais, site e atendimento.'],
                 ['Percepção de valor', 'Quando a estética conversa com a estratégia, o ticket sente.'],
-              ].map(([title, text]) => (
-                <div key={title} className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
+              ].map(([title, text], index) => (
+                <ScrollReveal key={title} delay={index * 80} y={18} className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
                   <p className="text-sm font-semibold text-goldSoft">{title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
-          </Card>
+            </Card>
+          </ScrollReveal>
         </div>
       </Container>
       <div className="relative mt-16 overflow-hidden">
@@ -626,34 +642,35 @@ function Plans() {
           description="Três formatos para diferentes estágios de operação. Todos desenhados para unir estratégia, execução e crescimento com mais previsibilidade."
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative h-full rounded-[30px] border p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 ${plan.highlight ? 'border-gold bg-white/[0.05] shadow-[0_22px_60px_rgba(212,175,55,0.12)]' : 'border-white/10 bg-white/[0.03] shadow-soft hover:border-gold/30'}`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#e7c45f] via-[#d4af37] to-[#b78617] px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-black">
-                  Mais contratado
-                </div>
-              )}
-              <div className="flex h-full flex-col">
-                <h3 className="text-center text-3xl font-semibold text-gradient-gold">{plan.name}</h3>
-                <p className="mt-8 text-center text-base leading-8 text-muted">{plan.description}</p>
-                <ul className="mt-8 flex-1 space-y-3">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm leading-6 text-muted">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <GoldButton href={WHATSAPP_URL} outline={!plan.highlight}>
-                    Falar sobre {plan.name}
-                  </GoldButton>
+          {plans.map((plan, index) => (
+            <ScrollReveal key={plan.name} delay={index * 100} scale={0.978}>
+              <div
+                className={`relative h-full rounded-[30px] border p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 ${plan.highlight ? 'border-gold bg-white/[0.05] shadow-[0_22px_60px_rgba(212,175,55,0.12)]' : 'border-white/10 bg-white/[0.03] shadow-soft hover:border-gold/30'}`}
+              >
+                {plan.highlight && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#e7c45f] via-[#d4af37] to-[#b78617] px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-black">
+                    Mais contratado
+                  </div>
+                )}
+                <div className="flex h-full flex-col">
+                  <h3 className="text-center text-3xl font-semibold text-gradient-gold">{plan.name}</h3>
+                  <p className="mt-8 text-center text-base leading-8 text-muted">{plan.description}</p>
+                  <ul className="mt-8 flex-1 space-y-3">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-sm leading-6 text-muted">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8">
+                    <GoldButton href={WHATSAPP_URL} outline={!plan.highlight}>
+                      Falar sobre {plan.name}
+                    </GoldButton>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
         <p className="mt-8 text-center text-xs text-muted">• Verba de mídia não inclusa</p>
@@ -700,8 +717,9 @@ function Testimonials() {
           </div>
           <div className="overflow-hidden">
             <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${index * (100 / visible)}%)` }}>
-              {testimonials.map((item) => (
+              {testimonials.map((item, index) => (
                 <div key={item.name} className={`w-full flex-shrink-0 p-2 ${visible === 3 ? 'xl:w-1/3' : visible === 2 ? 'md:w-1/2' : 'w-full'}`}>
+                  <ScrollReveal delay={index * 90} y={20}>
                   <Card className="flex h-full flex-col">
                     <div className="mb-6 flex items-center justify-between">
                       <img src={item.avatar} alt={item.name} className="h-16 w-16 rounded-full border border-gold/30 object-cover object-top" />
@@ -713,6 +731,7 @@ function Testimonials() {
                       <p className="text-sm text-muted">{item.role}</p>
                     </div>
                   </Card>
+                  </ScrollReveal>
                 </div>
               ))}
             </div>
@@ -723,10 +742,12 @@ function Testimonials() {
             ))}
           </div>
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
-            {['Kinder Klinik', 'Dra Rita Carvalho', 'Dr João Eduardo', 'Clínica Semper Odontologia'].map((item) => (
-              <div key={item} className="rounded-full border border-gold/20 bg-gold/5 px-5 py-2 text-xs font-medium text-gold/80">
-                {item}
-              </div>
+            {['Kinder Klinik', 'Dra Rita Carvalho', 'Dr João Eduardo', 'Clínica Semper Odontologia'].map((item, index) => (
+              <ScrollReveal key={item} delay={index * 70} y={16}>
+                <div className="rounded-full border border-gold/20 bg-gold/5 px-5 py-2 text-xs font-medium text-gold/80">
+                  {item}
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -741,14 +762,16 @@ function Faq() {
       <Container className="max-w-4xl">
         <SectionHeading eyebrow="FAQ" title="Perguntas frequentes" />
         <div className="mt-14 space-y-3">
-          {faq.map((item) => (
-            <details key={item.q} className="group rounded-[24px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition open:border-gold/30 open:bg-white/[0.04]">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-foreground">
-                {item.q}
-                <ChevronDown className="h-5 w-5 shrink-0 text-goldSoft transition group-open:rotate-180" />
-              </summary>
-              <p className="pt-4 text-sm leading-7 text-muted">{item.a}</p>
-            </details>
+          {faq.map((item, index) => (
+            <ScrollReveal key={item.q} delay={index * 70} y={18}>
+              <details className="group rounded-[24px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition open:border-gold/30 open:bg-white/[0.04]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-foreground">
+                  {item.q}
+                  <ChevronDown className="h-5 w-5 shrink-0 text-goldSoft transition group-open:rotate-180" />
+                </summary>
+                <p className="pt-4 text-sm leading-7 text-muted">{item.a}</p>
+              </details>
+            </ScrollReveal>
           ))}
         </div>
       </Container>
@@ -760,7 +783,7 @@ function Contact() {
   return (
     <section id="contato" className="relative overflow-visible py-20 md:py-28">
       <Container className="max-w-4xl">
-        <div className="relative z-10 space-y-7">
+        <ScrollReveal className="relative z-10 space-y-7" y={26} scale={0.985}>
           <SectionHeading
             eyebrow="Contato"
             title="Se o seu negócio precisa crescer com direção, a Supra entra para organizar o jogo"
@@ -772,22 +795,28 @@ function Contact() {
               'Estratégia para médicos, clínicas e negócios da saúde',
               'Execução com padrão premium e lógica comercial',
               'Foco em crescimento real, não em vaidade de dashboard',
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3 text-sm text-muted">
-                <BadgeCheck className="mt-0.5 h-5 w-5 text-gold" />
-                <span>{item}</span>
-              </div>
+            ].map((item, index) => (
+              <ScrollReveal key={item} delay={index * 80} y={16}>
+                <div className="flex items-start gap-3 text-sm text-muted">
+                  <BadgeCheck className="mt-0.5 h-5 w-5 text-gold" />
+                  <span>{item}</span>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="rounded-[28px] border border-gold/20 bg-gold/8 p-6 shadow-[0_18px_60px_rgba(212,175,55,0.12)]">
-            <p className="font-semibold text-foreground">Operação orientada por dados</p>
-            <p className="mt-2 text-sm text-muted">Sem promessa vazia. Sem ruído. Sem marketing de fumaça com verniz dourado.</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <GoldButton href={WHATSAPP_URL}>Quero falar com a Supra</GoldButton>
-            <GoldButton href={WHATSAPP_URL} outline>Quero uma avaliação</GoldButton>
-          </div>
-        </div>
+          <ScrollReveal delay={160} y={18}>
+            <div className="rounded-[28px] border border-gold/20 bg-gold/8 p-6 shadow-[0_18px_60px_rgba(212,175,55,0.12)]">
+              <p className="font-semibold text-foreground">Operação orientada por dados</p>
+              <p className="mt-2 text-sm text-muted">Sem promessa vazia. Sem ruído. Sem marketing de fumaça com verniz dourado.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={220} y={18}>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <GoldButton href={WHATSAPP_URL}>Quero falar com a Supra</GoldButton>
+              <GoldButton href={WHATSAPP_URL} outline>Quero uma avaliação</GoldButton>
+            </div>
+          </ScrollReveal>
+        </ScrollReveal>
       </Container>
     </section>
   );
@@ -875,11 +904,13 @@ function Card({ children, className = '' }: { children: React.ReactNode; classNa
 
 function SectionHeading({ eyebrow, title, description, center = true }: { eyebrow: string; title: string; description?: string; center?: boolean }) {
   return (
-    <div className={`${center ? 'text-center' : 'text-left'} mx-auto max-w-3xl`}>
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">{eyebrow}</p>
-      <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl md:text-5xl">{title}</h2>
-      {description && <p className="mt-4 text-base leading-7 text-muted">{description}</p>}
-    </div>
+    <ScrollReveal y={18} scale={0.992}>
+      <div className={`${center ? 'text-center' : 'text-left'} mx-auto max-w-3xl`}>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">{eyebrow}</p>
+        <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl md:text-5xl">{title}</h2>
+        {description && <p className="mt-4 text-base leading-7 text-muted">{description}</p>}
+      </div>
+    </ScrollReveal>
   );
 }
 
