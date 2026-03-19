@@ -1184,7 +1184,7 @@ function RocketLaunchScene() {
 
       if (engaged) {
         launched = true;
-        launchProgress = Math.min(1, launchProgress + 0.0072);
+        launchProgress = Math.min(1, launchProgress + 0.0029);
       }
 
       if (!launched) {
