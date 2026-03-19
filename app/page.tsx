@@ -260,6 +260,7 @@ export default function Page() {
   return (
     <main id="top" className="relative overflow-x-clip bg-background text-foreground">
       <SiteBackground />
+      <RocketLaunchScene />
       <Header />
       <FloatingWhatsApp />
       <Hero />
@@ -745,38 +746,33 @@ function Faq() {
 function Contact() {
   return (
     <section id="contato" className="relative overflow-visible py-20 md:py-28">
-      <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="relative z-10 space-y-7">
-            <SectionHeading
-              eyebrow="Contato"
-              title="Se o seu negócio precisa crescer com direção, a Supra entra para organizar o jogo"
-              description="Posicionamento, tráfego, autoridade, atendimento e conversão não precisam continuar operando como departamentos que mal se falam."
-              center={false}
-            />
-            <div className="space-y-4">
-              {[
-                'Estratégia para médicos, clínicas e negócios da saúde',
-                'Execução com padrão premium e lógica comercial',
-                'Foco em crescimento real, não em vaidade de dashboard',
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3 text-sm text-muted">
-                  <BadgeCheck className="mt-0.5 h-5 w-5 text-gold" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="rounded-[28px] border border-gold/20 bg-gold/8 p-6 shadow-[0_18px_60px_rgba(212,175,55,0.12)]">
-              <p className="font-semibold text-foreground">Operação orientada por dados</p>
-              <p className="mt-2 text-sm text-muted">Sem promessa vazia. Sem ruído. Sem marketing de fumaça com verniz dourado.</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <GoldButton href={WHATSAPP_URL}>Quero falar com a Supra</GoldButton>
-              <GoldButton href={WHATSAPP_URL} outline>Quero uma avaliação</GoldButton>
-            </div>
+      <Container className="max-w-4xl">
+        <div className="relative z-10 space-y-7">
+          <SectionHeading
+            eyebrow="Contato"
+            title="Se o seu negócio precisa crescer com direção, a Supra entra para organizar o jogo"
+            description="Posicionamento, tráfego, autoridade, atendimento e conversão não precisam continuar operando como departamentos que mal se falam."
+            center={false}
+          />
+          <div className="space-y-4">
+            {[
+              'Estratégia para médicos, clínicas e negócios da saúde',
+              'Execução com padrão premium e lógica comercial',
+              'Foco em crescimento real, não em vaidade de dashboard',
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 text-sm text-muted">
+                <BadgeCheck className="mt-0.5 h-5 w-5 text-gold" />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
-          <div className="relative min-h-[360px] lg:min-h-[760px]">
-            <RocketLaunchScene />
+          <div className="rounded-[28px] border border-gold/20 bg-gold/8 p-6 shadow-[0_18px_60px_rgba(212,175,55,0.12)]">
+            <p className="font-semibold text-foreground">Operação orientada por dados</p>
+            <p className="mt-2 text-sm text-muted">Sem promessa vazia. Sem ruído. Sem marketing de fumaça com verniz dourado.</p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <GoldButton href={WHATSAPP_URL}>Quero falar com a Supra</GoldButton>
+            <GoldButton href={WHATSAPP_URL} outline>Quero uma avaliação</GoldButton>
           </div>
         </div>
       </Container>
@@ -787,7 +783,7 @@ function Contact() {
 function Footer() {
   const links = ['#metodo', '#servicos', '#planos', '#provas', '#faq', '#contato'];
   return (
-    <footer className="relative border-t border-white/10 bg-black/35 py-14 backdrop-blur-xl">
+    <footer id="site-footer" className="relative border-t border-white/10 bg-black/35 py-14 backdrop-blur-xl">
       <Container>
         <div className="flex flex-col items-center justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-start">
           <a href="#top" className="inline-flex items-center">
@@ -1020,23 +1016,25 @@ function SiteBackground() {
 
 function RocketLaunchScene() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const wrapper = wrapperRef.current;
-    if (!canvas || !wrapper) return;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const trigger = document.getElementById('provas');
+    const footer = document.getElementById('site-footer');
+    if (!trigger || !footer) return;
+
     let engaged = false;
+    let launched = false;
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
-      const rect = wrapper.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
@@ -1176,20 +1174,34 @@ function RocketLaunchScene() {
     };
 
     const render = () => {
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
       t += 0.016;
       ctx.clearRect(0, 0, w, h);
 
-      if (engaged) launchProgress = Math.min(1, launchProgress + 0.0058);
+      if (engaged) {
+        launched = true;
+        launchProgress = Math.min(1, launchProgress + 0.0046);
+      }
+
+      if (!launched) {
+        raf = requestAnimationFrame(render);
+        return;
+      }
+
       const progress = launchProgress;
-      const jitter = engaged ? Math.sin(t * 30) * 3.2 + Math.sin(t * 18) * 1.4 : Math.sin(t * 5) * 1.2;
-      const rocketX = w * 0.62 + (engaged ? Math.sin(t * 24) * 1.6 : 0);
-      const launchStartY = h * 0.82;
-      const rocketY = launchStartY - progress * Math.max(h * 1.22, 760);
-      const bob = jitter - progress * 10;
+      const shaking = progress < 0.16;
+      const jitter = shaking ? Math.sin(t * 34) * 5.2 + Math.sin(t * 21) * 2.2 : Math.sin(t * 8) * 0.9;
+      const footerRect = footer.getBoundingClientRect();
+      const footerDocTop = footerRect.top + window.scrollY;
+      const footerAnchorY = footerDocTop + Math.min(footerRect.height * 0.22, 120);
+      const rocketBaseX = w < 768 ? w * 0.58 : w < 1280 ? w * 0.72 : w * 0.78;
+      const rocketX = rocketBaseX + (shaking ? Math.sin(t * 24) * 2.4 : Math.sin(t * 8) * 0.5) - progress * 12;
+      const rocketDocY = footerAnchorY - progress * (footerAnchorY + 340);
+      const rocketY = rocketDocY - window.scrollY;
+      const bob = jitter - progress * 12;
       const plumeBaseY = rocketY + 118;
-      const rocketVisible = progress < 0.985 && rocketY < h + 120 && rocketY > -220;
+      const rocketVisible = progress < 0.995 && rocketY < h + 220 && rocketY > -320;
 
       smoke.forEach((p) => {
         if (p.life <= 0 && rocketVisible) resetSmoke(p, rocketX, plumeBaseY);
@@ -1212,17 +1224,23 @@ function RocketLaunchScene() {
       if (rocketVisible) {
         drawRocket(rocketX, rocketY, 1.02, bob);
       }
+
+      const activeSmoke = smoke.some((p) => p.life > 0.02);
+      if (progress >= 1 && !rocketVisible && !activeSmoke) {
+        return;
+      }
+
       raf = requestAnimationFrame(render);
     };
 
     resize();
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) engaged = true;
+        if (entry?.isIntersecting && !launched) engaged = true;
       },
-      { threshold: 0.45 }
+      { threshold: 0.12 }
     );
-    io.observe(wrapper);
+    io.observe(trigger);
     const onResize = () => resize();
     window.addEventListener('resize', onResize);
     render();
@@ -1236,8 +1254,7 @@ function RocketLaunchScene() {
 
   return (
     <div
-      ref={wrapperRef}
-      className="absolute left-1/2 top-[-180px] h-[860px] min-h-[860px] w-[140vw] -translate-x-1/2 overflow-visible lg:left-auto lg:translate-x-0 lg:-right-[14vw] lg:-top-[280px] lg:bottom-[-420px] lg:h-auto lg:min-h-[1240px] lg:w-[min(64vw,980px)]"
+      className="pointer-events-none fixed inset-0 z-40 overflow-visible"
     >
       <canvas ref={canvasRef} className="h-full w-full" />
     </div>
