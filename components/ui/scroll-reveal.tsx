@@ -14,9 +14,9 @@ function ScrollReveal({
   children,
   className = '',
   delay = 0,
-  y = 22,
-  scale = 0.985,
-  threshold = 0.18,
+  y = 16,
+  scale = 0.992,
+  threshold = 0.08,
   style,
   ...props
 }: ScrollRevealProps) {
@@ -36,11 +36,11 @@ function ScrollReveal({
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          setVisible(true);
+          requestAnimationFrame(() => setVisible(true));
           io.disconnect();
         }
       },
-      { threshold }
+      { threshold, rootMargin: '0px 0px -10% 0px' }
     );
 
     io.observe(node);
