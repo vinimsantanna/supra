@@ -328,7 +328,7 @@ function Hero() {
     <section className="relative flex min-h-screen items-center pt-20">
       <Container className="relative z-10 grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
         <div className="max-w-3xl space-y-8">
-          <div className="inline-flex rounded-full border border-gold/25 bg-gold/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-goldSoft">
+          <div className="inline-flex rounded-full border border-[#d6c19b]/90 bg-[#f3eadb]/88 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#625847]">
             Marketing médico com direção estratégica
           </div>
           <h1 className="text-4xl font-semibold leading-[1.04] text-foreground sm:text-5xl lg:text-7xl">
@@ -344,7 +344,7 @@ function Hero() {
           </div>
           <div className="flex flex-wrap gap-3">
             {['Dados & Performance', 'Conteúdo de Autoridade', 'Funil & Conversão', 'Audiovisual Profissional'].map((item) => (
-              <span key={item} className="rounded-full border border-gold/30 bg-white/68 px-4 py-2 text-xs font-semibold text-[#7b6223] backdrop-blur-md">
+              <span key={item} className="rounded-full border border-[#d6c19b]/85 bg-[#f5eee2]/82 px-4 py-2 text-xs font-semibold text-[#5f5445] backdrop-blur-md">
                 {item}
               </span>
             ))}
@@ -571,7 +571,7 @@ function MediaShowcase() {
             <div className="grid gap-4 p-4 md:grid-cols-2">
               {mediaVideos.map((video, index) => (
                 <ScrollReveal key={video.title} delay={index * 110} y={20} className="relative overflow-hidden rounded-[24px] border border-gold/20 bg-[#eee2cb]">
-                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/35 bg-[#fbf7ef]/88 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#7b6223] backdrop-blur">
+                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-[#d6c19b]/85 bg-[#fbf7ef]/92 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#5f5445] backdrop-blur">
                     <PlayCircle className="h-3.5 w-3.5" />Vídeo
                   </div>
                   <video controls playsInline preload="metadata" poster={video.poster} className="aspect-[4/5] h-full w-full bg-[#eee2cb] object-contain">
@@ -584,7 +584,7 @@ function MediaShowcase() {
           </ScrollReveal>
           <ScrollReveal delay={120} scale={0.98}>
             <Card className="flex h-full flex-col">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Ativos visuais</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6a5d4a]">Ativos visuais</p>
             <h3 className="mt-3 text-2xl font-semibold text-foreground">Presença premium não nasce por acidente</h3>
             <p className="mt-3 text-sm leading-7 text-muted">
               A Supra combina posicionamento, captação e direção criativa para que cada ponto de contato transmita confiança. Sim, até o frame parado precisa vender. Especialmente ele.
@@ -597,7 +597,7 @@ function MediaShowcase() {
                 ['Percepção de valor', 'Quando a estética conversa com a estratégia, o ticket sente.'],
               ].map(([title, text], index) => (
                 <ScrollReveal key={title} delay={index * 80} y={18} className="rounded-2xl border border-[#dcc9a4]/70 bg-white/62 p-4">
-                  <p className="text-sm font-semibold text-goldSoft">{title}</p>
+                  <p className="text-sm font-semibold text-[#5f5445]">{title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
                 </ScrollReveal>
               ))}
@@ -700,10 +700,10 @@ function Testimonials() {
         />
         <div className="mt-14">
           <div className="mb-5 flex justify-center gap-2 md:justify-end">
-            <button onClick={() => setIndex((p) => Math.max(0, p - 1))} className="rounded-full border border-gold/30 bg-white/68 p-2.5 text-[#7b6223] transition hover:bg-gold/12">
+            <button onClick={() => setIndex((p) => Math.max(0, p - 1))} className="rounded-full border border-[#d6c19b]/85 bg-[#f5eee2]/82 p-2.5 text-[#5f5445] transition hover:bg-[#ede2cf]">
               <ChevronLeft className="h-5 w-5" />
             </button>
-            <button onClick={() => setIndex((p) => Math.min(max, p + 1))} className="rounded-full border border-gold/30 bg-white/68 p-2.5 text-[#7b6223] transition hover:bg-gold/12">
+            <button onClick={() => setIndex((p) => Math.min(max, p + 1))} className="rounded-full border border-[#d6c19b]/85 bg-[#f5eee2]/82 p-2.5 text-[#5f5445] transition hover:bg-[#ede2cf]">
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
@@ -736,7 +736,7 @@ function Testimonials() {
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
             {['Kinder Klinik', 'Dra Rita Carvalho', 'Dr João Eduardo', 'Clínica Semper Odontologia'].map((item, index) => (
               <ScrollReveal key={item} delay={index * 70} y={16}>
-                <div className="rounded-full border border-gold/20 bg-gold/5 px-5 py-2 text-xs font-medium text-gold/80">
+                <div className="rounded-full border border-[#d6c19b]/80 bg-[#f5eee2]/82 px-5 py-2 text-xs font-medium text-[#5f5445]">
                   {item}
                 </div>
               </ScrollReveal>
@@ -759,7 +759,7 @@ function Faq() {
               <details className="group rounded-[24px] border border-[#dcc9a4]/75 bg-white/68 p-6 backdrop-blur transition open:border-gold/35 open:bg-white/82">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-foreground">
                   {item.q}
-                  <ChevronDown className="h-5 w-5 shrink-0 text-goldSoft transition group-open:rotate-180" />
+                  <ChevronDown className="h-5 w-5 shrink-0 text-[#6a5d4a] transition group-open:rotate-180" />
                 </summary>
                 <p className="pt-4 text-sm leading-7 text-muted">{item.a}</p>
               </details>
