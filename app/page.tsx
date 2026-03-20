@@ -101,7 +101,7 @@ const resultAccelerators = [
     title: 'Autoridade',
     description: 'Vídeos que elevam percepção de valor e presença digital.',
     gif: '/assets/gifs/autoridade.gif',
-    objectClassName: 'object-cover',
+    objectClassName: 'object-contain scale-[1.02]',
   },
   {
     title: 'Conexão',
