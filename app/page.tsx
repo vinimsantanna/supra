@@ -96,6 +96,33 @@ const painPoints = [
   { label: 'Leads que não convertem', icon: UserX },
 ] as const;
 
+const resultAccelerators = [
+  {
+    title: 'Autoridade',
+    description: 'Vídeos que elevam percepção de valor e presença digital.',
+    gif: '/assets/gifs/autoridade.gif',
+    objectClassName: 'object-cover',
+  },
+  {
+    title: 'Conexão',
+    description: 'Conteúdo que aproxima o público e gera confiança.',
+    gif: '/assets/gifs/conexao.gif',
+    objectClassName: 'object-cover',
+  },
+  {
+    title: 'Posicionamento',
+    description: 'Comunicação visual alinhada com o nível do profissional.',
+    gif: '/assets/gifs/posicionamento.gif',
+    objectClassName: 'object-cover',
+  },
+  {
+    title: 'Conversão',
+    description: 'Criativos pensados para atrair atenção e apoiar o fechamento.',
+    gif: '/assets/gifs/conversao.gif',
+    objectClassName: 'object-cover',
+  },
+] as const;
+
 const method = [
   {
     number: '01',
@@ -260,6 +287,7 @@ export default function Page() {
       <Hero />
       <Founders />
       <Audience />
+      <ResultsAccelerator />
       <Pain />
       <Method />
       <Services />
@@ -462,6 +490,48 @@ function Audience() {
               </ScrollReveal>
             );
           })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ResultsAccelerator() {
+  return (
+    <section className="relative py-20 md:py-28">
+      <Container>
+        <ScrollReveal y={18} scale={0.992}>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">Resultados em camadas</p>
+            <h2 className="text-2xl font-semibold leading-tight text-foreground sm:text-3xl md:text-4xl">
+              O que acelera o resultado dos nossos clientes
+            </h2>
+            <p className="mt-4 text-base leading-7 text-muted">
+              Nossos vídeos não existem só para gerar estética. Eles existem para posicionar, criar conexão e transformar atenção em resultado real.
+            </p>
+          </div>
+        </ScrollReveal>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {resultAccelerators.map((item, index) => (
+            <ScrollReveal key={item.title} delay={index * 90} y={24} scale={0.985}>
+              <div className="group relative overflow-hidden rounded-[30px] border border-[#d7bc80]/50 bg-white/10 shadow-[0_20px_60px_rgba(62,48,17,0.12)] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:border-gold/50">
+                <div className="pointer-events-none absolute -inset-8 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.18),transparent_55%)] opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <img
+                    src={item.gif}
+                    alt={item.title}
+                    className={`h-full w-full ${item.objectClassName} transition duration-700 group-hover:scale-[1.035]`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,8,5,0.88)] via-[rgba(10,8,5,0.26)] to-[rgba(10,8,5,0.1)]" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                    <div className="h-px w-16 bg-gradient-to-r from-gold via-[#f2deaa] to-transparent" />
+                    <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-2 max-w-sm text-sm leading-6 text-white/76">{item.description}</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </Container>
     </section>

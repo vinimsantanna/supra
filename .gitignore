@@ -1,6 +1,8 @@
 .next/
 node_modules/
 .codex/
+tmp/
+tools/
 
 # Logs
 npm-debug.log*
