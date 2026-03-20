@@ -36,7 +36,7 @@ function ScrollReveal({
     if (!node) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
+    if (reduceMotion || isMobile) {
       setVisible(true);
       return;
     }
@@ -58,9 +58,9 @@ function ScrollReveal({
     return () => io.disconnect();
   }, [isMobile, threshold]);
 
-  const resolvedDelay = isMobile ? Math.min(delay * 0.18, 60) : delay;
-  const resolvedY = isMobile ? Math.min(y, 10) : y;
-  const resolvedScale = isMobile ? Math.max(scale, 0.996) : scale;
+  const resolvedDelay = isMobile ? 0 : delay;
+  const resolvedY = isMobile ? 0 : y;
+  const resolvedScale = isMobile ? 1 : scale;
 
   return (
     <div
