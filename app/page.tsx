@@ -399,19 +399,19 @@ function Founders() {
           {founders.map((f, index) => (
             <ScrollReveal key={f.name} delay={index * 120} y={30} scale={0.982}>
               <BorderRotate
-                animationMode="rotate-on-hover"
+                animationMode="static"
                 animationSpeed={2.4}
                 borderWidth={1.5}
                 borderRadius={34}
-                backgroundColor="rgba(10,10,10,0.9)"
+                backgroundColor="rgba(252,246,236,0.94)"
                 gradientColors={{
-                  primary: '#2f250b',
-                  secondary: '#d4af37',
-                  accent: '#f4df9f',
+                  primary: '#d8c4a1',
+                  secondary: '#c6a85b',
+                  accent: '#edd9a2',
                 }}
                 className="overflow-hidden shadow-soft"
               >
-                <div className="grid items-center gap-8 p-6 backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]">
+                <div className="grid items-center gap-8 bg-[linear-gradient(180deg,rgba(255,251,246,0.92),rgba(246,236,219,0.82))] p-6 backdrop-blur-xl md:p-8 lg:grid-cols-[320px_1fr]">
                   <div>
                     <div className="mx-auto w-full max-w-[280px] md:max-w-[320px]">
                       <div className="relative aspect-[3/4] overflow-hidden rounded-[28px] border border-gold/20 shadow-[12px_-10px_30px_-8px_rgba(212,175,55,0.3)]">
@@ -420,9 +420,9 @@ function Founders() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-3xl font-semibold text-gradient-gold">{f.name}</h3>
-                    <p className="mt-2 text-xs uppercase tracking-[0.22em] text-muted">{f.role}</p>
-                    <div className="mt-6 space-y-4 text-base leading-8 text-muted">
+                    <h3 className="text-3xl font-semibold tracking-[-0.02em] text-[#2c2116]">{f.name}</h3>
+                    <p className="mt-2 text-xs uppercase tracking-[0.22em] text-[#766958]">{f.role}</p>
+                    <div className="mt-6 space-y-4 text-base leading-8 text-[#5c5145]">
                       {f.description.map((p) => (
                         <p key={p}>{p}</p>
                       ))}

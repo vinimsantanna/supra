@@ -1,6 +1,6 @@
 import React, { CSSProperties, HTMLAttributes, ReactNode } from 'react';
 
-type AnimationMode = 'auto-rotate' | 'rotate-on-hover' | 'stop-rotate-on-hover';
+type AnimationMode = 'auto-rotate' | 'rotate-on-hover' | 'stop-rotate-on-hover' | 'static';
 
 interface BorderRotateProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
   children: ReactNode;
@@ -44,6 +44,8 @@ function BorderRotate({
         return 'gradient-border-hover';
       case 'stop-rotate-on-hover':
         return 'gradient-border-stop-hover';
+      case 'static':
+        return '';
       default:
         return '';
     }
