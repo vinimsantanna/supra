@@ -165,18 +165,34 @@ const services = [
   { title: 'Treinamento de Atendimento', description: 'Estrutura comercial para converter melhor cada lead gerado.', icon: GraduationCap },
 ] as const;
 
-const mediaVideos = [
+const featuredTestimonials = [
   {
-    title: 'Vietnam Hair',
+    name: 'Cliente Vietnam Hair',
+    role: 'Cargo / função',
+    company: 'Vietnam Hair',
+    quote: 'Inserir aqui a frase principal do depoimento em vídeo.',
+    testimonial:
+      'Adicionar aqui a transcrição resumida ou o trecho completo validado do depoimento do cliente Vietnam Hair para reforçar esta prova social com o texto final.',
     poster: '/assets/portfolio/poster-vietnam.webp',
-    url: '/assets/videos/video-vietnam-hair.mp4',
+    videoUrl: '/assets/videos/video-vietnam-hair.mp4',
   },
   {
-    title: 'Intermed',
+    name: 'Regiane Querino',
+    role: 'Gestão',
+    company: 'Clínica Intermed',
+    quote: 'Me entregaram tudo o que realmente estava precisando.',
+    testimonial:
+      'Pontualidade, responsabilidade e conteúdos riquíssimos. A operação ficou mais alinhada, a comunicação ganhou força e a percepção de valor passou a acompanhar o nível do serviço entregue.',
     poster: '/assets/portfolio/poster-intermed.webp',
-    url: '/assets/videos/video-intermed.mp4',
+    videoUrl: '/assets/videos/video-intermed.mp4',
   },
 ] as const;
+
+const mediaVideos = featuredTestimonials.map((item) => ({
+  title: item.company,
+  poster: item.poster,
+  url: item.videoUrl,
+}));
 
 const mediaImages = [
   '/assets/gallery/foto-semper.webp',
@@ -292,6 +308,7 @@ export default function Page() {
       <Method />
       <Services />
       <MediaShowcase />
+      <FeaturedTestimonials />
       <Plans />
       <Testimonials />
       <Faq />
@@ -625,7 +642,7 @@ function Services() {
   );
 }
 
-function MediaShowcase() {
+function LegacyMediaShowcase() {
   const duplicated = [...mediaImages, ...mediaImages];
   return (
     <section className="relative py-20 md:py-28">
@@ -690,6 +707,132 @@ function MediaShowcase() {
           ))}
         </div>
       </div>
+    </section>
+  );
+}
+
+function MediaShowcase() {
+  const duplicated = [...mediaImages, ...mediaImages];
+  const editorialFrames = mediaImages.slice(0, 4);
+  return (
+    <section className="relative py-20 md:py-28">
+      <Container>
+        <SectionHeading
+          eyebrow="PortfÃ³lio Vivo"
+          title="Fotos e vÃ­deos que elevam percepÃ§Ã£o de valor"
+          description="O visual certo nÃ£o serve apenas para ficar bonito. Ele organiza a narrativa da marca, sustenta autoridade e ajuda o paciente a confiar antes mesmo da primeira conversa."
+        />
+        <ScrollReveal className="mt-14" scale={0.985}>
+          <div className="relative overflow-hidden rounded-[34px] border border-[#dcc9a4]/80 bg-[linear-gradient(180deg,rgba(255,251,244,0.92),rgba(247,238,221,0.82))] p-6 shadow-[0_24px_70px_rgba(162,124,36,0.12)] backdrop-blur-xl md:p-8 lg:p-10">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(212,175,55,0.1),transparent_22%)]" />
+            <div className="relative grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+              <div className="flex h-full flex-col">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6a5d4a]">Ativos visuais</p>
+                <h3 className="mt-3 max-w-2xl text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                  PresenÃ§a premium nÃ£o nasce por acidente
+                </h3>
+                <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
+                  A Supra combina posicionamento, captaÃ§Ã£o e direÃ§Ã£o criativa para que cada ponto de contato transmita confianÃ§a. Sim, atÃ© o frame parado precisa vender. Especialmente ele.
+                </p>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {[
+                    ['Autoridade visual', 'Imagem, enquadramento, narrativa e acabamento com padrÃ£o premium.'],
+                    ['ConversÃ£o', 'ConteÃºdo que ajuda o lead a confiar mais rÃ¡pido e decidir melhor.'],
+                    ['ConsistÃªncia', 'Marca coerente em trÃ¡fego, redes sociais, site e atendimento.'],
+                    ['PercepÃ§Ã£o de valor', 'Quando a estÃ©tica conversa com a estratÃ©gia, o ticket sente.'],
+                  ].map(([title, text], index) => (
+                    <ScrollReveal key={title} delay={index * 80} y={18} className="rounded-[24px] border border-[#dcc9a4]/70 bg-white/56 p-5 shadow-[0_12px_30px_rgba(162,124,36,0.06)]">
+                      <p className="text-base font-semibold text-[#5f5445]">{title}</p>
+                      <p className="mt-3 text-sm leading-7 text-muted">{text}</p>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {editorialFrames.map((url, index) => (
+                  <ScrollReveal key={url} delay={index * 90} y={20}>
+                    <div className="group relative overflow-hidden rounded-[26px] border border-gold/20 bg-[#eee2cb] shadow-[0_20px_42px_rgba(102,78,31,0.12)]">
+                      <div className="absolute -inset-3 bg-gradient-to-tr from-gold/16 via-transparent to-gold/8 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
+                      <img
+                        src={url}
+                        alt="PortfÃ³lio visual Supra"
+                        className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                      />
+                    </div>
+                  </ScrollReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </Container>
+      <div className="relative mt-16 overflow-hidden">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-background to-transparent md:w-40" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-background to-transparent md:w-40" />
+        <div className="flex w-max gap-5 animate-marquee px-4 hover:[animation-play-state:paused] md:gap-6">
+          {duplicated.map((url, i) => (
+            <div key={`${url}-${i}`} className="group relative w-[220px] flex-shrink-0 md:w-[280px] lg:w-[320px]">
+              <div className="absolute -inset-2 rounded-[28px] bg-gradient-to-tr from-gold/20 via-transparent to-gold/10 opacity-0 blur-2xl transition group-hover:opacity-100" />
+              <div className="relative overflow-hidden rounded-[26px] border border-gold/25 bg-[#eee2cb] shadow-[0_18px_42px_rgba(102,78,31,0.14)]">
+                <img src={url} alt="Cliente Supra" className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeaturedTestimonials() {
+  return (
+    <section className="relative py-24 md:py-32">
+      <Container className="max-w-6xl">
+        <ScrollReveal y={18} scale={0.992}>
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">Depoimentos em destaque</p>
+            <h2 className="text-3xl font-semibold leading-tight text-foreground sm:text-4xl md:text-5xl">
+              Quem jÃ¡ viveu a operaÃ§Ã£o confirma
+            </h2>
+            <p className="mt-4 text-base leading-8 text-muted md:text-lg">
+              Resultados consistentes nÃ£o nascem de promessas. Nascem de estratÃ©gia, execuÃ§Ã£o e percepÃ§Ã£o de valor construÃ­da da forma certa.
+            </p>
+          </div>
+        </ScrollReveal>
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+          {featuredTestimonials.map((item, index) => (
+            <ScrollReveal key={item.company} delay={index * 120} y={24} scale={0.985}>
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-[#caa24b]/35 bg-[linear-gradient(180deg,rgba(20,17,13,0.96),rgba(10,9,7,0.98))] p-4 shadow-[0_28px_80px_rgba(18,13,7,0.34)] transition duration-500 hover:-translate-y-1 hover:border-gold/55">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.08),transparent_24%)] opacity-90" />
+                <div className="relative flex h-full flex-col">
+                  <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-black/30">
+                    <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-[rgba(20,17,13,0.78)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f0ddb0] backdrop-blur-md">
+                      <PlayCircle className="h-3.5 w-3.5" />
+                      Depoimento em vÃ­deo
+                    </div>
+                    <video controls playsInline preload="metadata" poster={item.poster} className="aspect-video w-full bg-black/40 object-cover">
+                      <source src={item.videoUrl} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div className="flex flex-1 flex-col px-2 pb-2 pt-6">
+                    <Quote className="h-10 w-10 text-gold/28" />
+                    <blockquote className="mt-5 text-2xl font-semibold leading-tight text-[#fff8ea]">
+                      â€œ{item.quote}â€
+                    </blockquote>
+                    <p className="mt-5 text-sm leading-7 text-[#d5cec2] md:text-[15px]">{item.testimonial}</p>
+                    <div className="mt-8 border-t border-white/10 pt-5">
+                      <p className="text-base font-semibold text-white">{item.name}</p>
+                      <p className="mt-1 text-sm text-[#d4c6a8]">
+                        {item.role} <span className="text-white/30">â€¢</span> {item.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </ScrollReveal>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }
