@@ -285,7 +285,7 @@ function Header() {
   ] as const;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-2xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#d9c7a6]/70 bg-[#fbf7ef]/72 backdrop-blur-2xl">
       <Container className="flex h-20 items-center justify-between lg:h-24">
         <a href="#top" className="inline-flex items-center">
           <img src={LOGO_URL} alt="Supra" className="h-[72px] w-auto lg:h-24" />
@@ -298,17 +298,17 @@ function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 p-2 text-muted transition hover:border-gold/40 hover:text-goldSoft">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="rounded-full border border-[#d9c7a6]/75 bg-white/64 p-2 text-muted transition hover:border-gold/40 hover:text-[#7b6223]">
             <Instagram className="h-4 w-4" />
           </a>
           <GoldButton href={WHATSAPP_URL}>Falar no WhatsApp</GoldButton>
         </div>
-        <button onClick={() => setOpen((v) => !v)} className="rounded-full border border-white/10 p-2 lg:hidden" aria-label="Abrir menu">
+        <button onClick={() => setOpen((v) => !v)} className="rounded-full border border-[#d9c7a6]/70 bg-white/60 p-2 lg:hidden" aria-label="Abrir menu">
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </Container>
       {open && (
-        <div className="border-t border-white/10 bg-black/92 lg:hidden">
+        <div className="border-t border-[#d9c7a6]/70 bg-[#fbf4e7]/95 lg:hidden">
           <Container className="flex flex-col gap-4 py-5">
             {links.map(([label, href]) => (
               <a key={href} href={href} onClick={() => setOpen(false)} className="text-sm text-muted transition hover:text-goldSoft">
@@ -344,7 +344,7 @@ function Hero() {
           </div>
           <div className="flex flex-wrap gap-3">
             {['Dados & Performance', 'Conteúdo de Autoridade', 'Funil & Conversão', 'Audiovisual Profissional'].map((item) => (
-              <span key={item} className="rounded-full border border-gold/20 bg-black/30 px-4 py-2 text-xs font-semibold text-goldSoft backdrop-blur-md">
+              <span key={item} className="rounded-full border border-gold/30 bg-white/68 px-4 py-2 text-xs font-semibold text-[#7b6223] backdrop-blur-md">
                 {item}
               </span>
             ))}
@@ -358,9 +358,9 @@ function Hero() {
 
 function HeroMetricsCard() {
   return (
-    <div className="relative rounded-[34px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-0 shadow-soft backdrop-blur-xl">
+    <div className="relative rounded-[34px] border border-[#dcc9a4]/70 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(251,245,234,0.72))] p-0 shadow-soft backdrop-blur-xl">
       <div className="pointer-events-none absolute inset-0 rounded-[34px] bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.14),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(212,175,55,0.08),transparent_24%)]" />
-      <div className="pointer-events-none absolute inset-x-10 top-6 h-24 rounded-full bg-gold/10 blur-3xl" />
+      <div className="pointer-events-none absolute inset-x-10 top-6 h-24 rounded-full bg-gold/14 blur-3xl" />
       <div className="relative grid gap-4 p-6 md:grid-cols-2 md:p-8">
         {([
           ['Leads qualificados', BarChart3],
@@ -368,7 +368,7 @@ function HeroMetricsCard() {
           ['Autoridade', Shield],
           ['Eficiência de mídia', Zap],
         ] as const).map(([label, Icon]) => (
-          <div key={label} className="rounded-[28px] border border-white/12 bg-black/45 p-5 backdrop-blur-md">
+          <div key={label} className="rounded-[28px] border border-[#dcc9a4]/75 bg-[#fbf4e8]/88 p-5 backdrop-blur-md">
             <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/20 bg-gold/10">
               <Icon className="h-6 w-6 text-gold" />
             </div>
@@ -379,7 +379,7 @@ function HeroMetricsCard() {
           </div>
         ))}
       </div>
-      <div className="relative border-t border-white/10 px-8 py-5 text-xs uppercase tracking-[0.22em] text-muted">
+      <div className="relative border-t border-[#dcc9a4]/75 px-8 py-5 text-xs uppercase tracking-[0.22em] text-muted">
         Sem promessas vazias. Com processo, dados e execução.
       </div>
     </div>
@@ -478,7 +478,7 @@ function Pain() {
             const Icon = item.icon;
             return (
               <ScrollReveal key={item.label} delay={index * 75} y={18}>
-                <div className="flex items-center gap-4 rounded-[22px] border border-white/10 bg-white/[0.03] p-5 backdrop-blur transition hover:border-gold/30 hover:bg-white/[0.04]">
+                <div className="flex items-center gap-4 rounded-[22px] border border-[#dcc9a4]/75 bg-white/68 p-5 backdrop-blur transition hover:border-gold/35 hover:bg-white/82">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-red-500/10 text-red-300">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -570,11 +570,11 @@ function MediaShowcase() {
             <Card className="overflow-hidden p-0">
             <div className="grid gap-4 p-4 md:grid-cols-2">
               {mediaVideos.map((video, index) => (
-                <ScrollReveal key={video.title} delay={index * 110} y={20} className="relative overflow-hidden rounded-[24px] border border-gold/15 bg-black">
-                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/30 bg-black/55 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-goldSoft backdrop-blur">
+                <ScrollReveal key={video.title} delay={index * 110} y={20} className="relative overflow-hidden rounded-[24px] border border-gold/20 bg-[#eee2cb]">
+                  <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/35 bg-[#fbf7ef]/88 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[#7b6223] backdrop-blur">
                     <PlayCircle className="h-3.5 w-3.5" />Vídeo
                   </div>
-                  <video controls playsInline preload="metadata" poster={video.poster} className="aspect-[4/5] h-full w-full bg-black object-contain">
+                  <video controls playsInline preload="metadata" poster={video.poster} className="aspect-[4/5] h-full w-full bg-[#eee2cb] object-contain">
                     <source src={video.url} type="video/mp4" />
                   </video>
                 </ScrollReveal>
@@ -596,7 +596,7 @@ function MediaShowcase() {
                 ['Consistência', 'Marca coerente em tráfego, redes sociais, site e atendimento.'],
                 ['Percepção de valor', 'Quando a estética conversa com a estratégia, o ticket sente.'],
               ].map(([title, text], index) => (
-                <ScrollReveal key={title} delay={index * 80} y={18} className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
+                <ScrollReveal key={title} delay={index * 80} y={18} className="rounded-2xl border border-[#dcc9a4]/70 bg-white/62 p-4">
                   <p className="text-sm font-semibold text-goldSoft">{title}</p>
                   <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
                 </ScrollReveal>
@@ -613,7 +613,7 @@ function MediaShowcase() {
           {duplicated.map((url, i) => (
             <div key={`${url}-${i}`} className="group relative w-[220px] flex-shrink-0 md:w-[280px] lg:w-[320px]">
               <div className="absolute -inset-2 rounded-[28px] bg-gradient-to-tr from-gold/20 via-transparent to-gold/10 opacity-0 blur-2xl transition group-hover:opacity-100" />
-              <div className="relative overflow-hidden rounded-[26px] border border-gold/20 bg-black shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+              <div className="relative overflow-hidden rounded-[26px] border border-gold/25 bg-[#eee2cb] shadow-[0_18px_42px_rgba(102,78,31,0.14)]">
                 <img src={url} alt="Cliente Supra" className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-[1.04]" />
               </div>
             </div>
@@ -637,7 +637,7 @@ function Plans() {
           {plans.map((plan, index) => (
             <ScrollReveal key={plan.name} delay={index * 100} scale={0.978}>
               <div
-                className={`relative h-full rounded-[30px] border p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 ${plan.highlight ? 'border-gold bg-white/[0.05] shadow-[0_22px_60px_rgba(212,175,55,0.12)]' : 'border-white/10 bg-white/[0.03] shadow-soft hover:border-gold/30'}`}
+                className={`relative h-full rounded-[30px] border p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 ${plan.highlight ? 'border-gold bg-white/82 shadow-[0_22px_60px_rgba(212,175,55,0.18)]' : 'border-[#dcc9a4]/75 bg-white/68 shadow-soft hover:border-gold/35'}`}
               >
                 {plan.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#e7c45f] via-[#d4af37] to-[#b78617] px-4 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-black">
@@ -700,10 +700,10 @@ function Testimonials() {
         />
         <div className="mt-14">
           <div className="mb-5 flex justify-center gap-2 md:justify-end">
-            <button onClick={() => setIndex((p) => Math.max(0, p - 1))} className="rounded-full border border-gold/30 bg-white/[0.03] p-2.5 text-goldSoft transition hover:bg-gold/10">
+            <button onClick={() => setIndex((p) => Math.max(0, p - 1))} className="rounded-full border border-gold/30 bg-white/68 p-2.5 text-[#7b6223] transition hover:bg-gold/12">
               <ChevronLeft className="h-5 w-5" />
             </button>
-            <button onClick={() => setIndex((p) => Math.min(max, p + 1))} className="rounded-full border border-gold/30 bg-white/[0.03] p-2.5 text-goldSoft transition hover:bg-gold/10">
+            <button onClick={() => setIndex((p) => Math.min(max, p + 1))} className="rounded-full border border-gold/30 bg-white/68 p-2.5 text-[#7b6223] transition hover:bg-gold/12">
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
@@ -718,7 +718,7 @@ function Testimonials() {
                       <Quote className="h-10 w-10 text-gold/25" />
                     </div>
                     <p className="text-base leading-8 text-foreground/92">“{item.quote}”</p>
-                    <div className="mt-auto border-t border-white/10 pt-4 text-center">
+                    <div className="mt-auto border-t border-[#dcc9a4]/70 pt-4 text-center">
                       <p className="font-semibold text-foreground">{item.name}</p>
                       <p className="text-sm text-muted">{item.role}</p>
                     </div>
@@ -756,7 +756,7 @@ function Faq() {
         <div className="mt-14 space-y-3">
           {faq.map((item, index) => (
             <ScrollReveal key={item.q} delay={index * 70} y={18}>
-              <details className="group rounded-[24px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition open:border-gold/30 open:bg-white/[0.04]">
+              <details className="group rounded-[24px] border border-[#dcc9a4]/75 bg-white/68 p-6 backdrop-blur transition open:border-gold/35 open:bg-white/82">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-foreground">
                   {item.q}
                   <ChevronDown className="h-5 w-5 shrink-0 text-goldSoft transition group-open:rotate-180" />
@@ -797,7 +797,7 @@ function Contact() {
             ))}
           </div>
           <ScrollReveal delay={160} y={18}>
-            <div className="rounded-[28px] border border-gold/20 bg-gold/8 p-6 shadow-[0_18px_60px_rgba(212,175,55,0.12)]">
+            <div className="rounded-[28px] border border-gold/30 bg-[linear-gradient(180deg,rgba(255,252,244,0.9),rgba(248,239,221,0.82))] p-6 shadow-[0_18px_60px_rgba(212,175,55,0.14)]">
               <p className="font-semibold text-foreground">Operação orientada por dados</p>
               <p className="mt-2 text-sm text-muted">Sem promessa vazia. Sem ruído. Sem marketing de fumaça com verniz dourado.</p>
             </div>
@@ -817,9 +817,9 @@ function Contact() {
 function Footer() {
   const links = ['#metodo', '#servicos', '#planos', '#provas', '#faq', '#contato'];
   return (
-    <footer id="site-footer" className="relative border-t border-white/10 bg-black/35 py-14 backdrop-blur-xl">
+    <footer id="site-footer" className="relative border-t border-[#d9c7a6]/70 bg-[#f4ecdd]/78 py-14 backdrop-blur-xl">
       <Container>
-        <div className="flex flex-col items-center justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-start">
+        <div className="flex flex-col items-center justify-between gap-8 border-b border-[#d9c7a6]/70 pb-10 md:flex-row md:items-start">
           <a href="#top" className="inline-flex items-center">
             <img src={LOGO_URL} alt="Supra" className="h-16 w-auto" />
           </a>
@@ -836,10 +836,10 @@ function Footer() {
             <a href="#" className="transition hover:text-goldSoft">PRIVACIDADE</a>
           </nav>
           <div className="flex items-center gap-3">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 p-2 text-goldSoft transition hover:border-gold/30 hover:bg-gold/10">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="rounded-full border border-[#d9c7a6]/75 bg-white/65 p-2 text-[#7b6223] transition hover:border-gold/35 hover:bg-gold/12">
               <Instagram className="h-4 w-4" />
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 p-2 text-goldSoft transition hover:border-gold/30 hover:bg-gold/10">
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="rounded-full border border-[#d9c7a6]/75 bg-white/65 p-2 text-[#7b6223] transition hover:border-gold/35 hover:bg-gold/12">
               <MessageCircle className="h-4 w-4" />
             </a>
           </div>
@@ -859,7 +859,7 @@ function FloatingWhatsApp() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full border border-gold/30 bg-black/82 px-4 py-3 text-sm font-semibold text-goldSoft backdrop-blur-xl transition hover:border-gold/60 hover:bg-black"
+      className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full border border-gold/35 bg-[#f6eddc]/94 px-4 py-3 text-sm font-semibold text-[#6d551f] backdrop-blur-xl transition hover:border-gold/60 hover:bg-[#efe2c7]"
     >
       <MessageCircle className="h-4 w-4" />
       <span className="hidden sm:inline">WhatsApp</span>
@@ -875,7 +875,7 @@ function GoldButton({ href, children, outline = false }: { href: string; childre
   const base =
     'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60';
   const styles = outline
-    ? 'border border-gold/35 bg-white/[0.02] text-goldSoft backdrop-blur hover:border-gold hover:bg-gold/10 hover:text-foreground'
+    ? 'border border-gold/35 bg-white/68 text-[#6d551f] backdrop-blur hover:border-gold hover:bg-gold/12 hover:text-foreground'
     : 'bg-gradient-to-r from-[#e7c45f] via-[#d4af37] to-[#b78617] text-black shadow-[0_10px_28px_rgba(212,175,55,0.18)] hover:translate-y-[-1px]';
   return (
     <a href={href} target="_blank" rel="noreferrer" className={`${base} ${styles}`}>
@@ -887,7 +887,7 @@ function GoldButton({ href, children, outline = false }: { href: string; childre
 
 function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.035] p-6 shadow-soft backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-gold/35 ${className}`}>
+    <div className={`group relative overflow-hidden rounded-[28px] border border-[#dcc9a4]/75 bg-white/68 p-6 shadow-soft backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-gold/35 ${className}`}>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(212,175,55,0.14),transparent_32%)] opacity-60 transition duration-300 group-hover:opacity-100" />
       {children}
     </div>
@@ -948,7 +948,7 @@ function SiteBackground() {
 
     const drawConstellationLines = (w: number, h: number) => {
       ctx.save();
-      ctx.strokeStyle = 'rgba(212,175,55,0.06)';
+      ctx.strokeStyle = 'rgba(176,138,56,0.12)';
       ctx.lineWidth = 1;
       for (let i = 0; i < stars.length; i += 18) {
         const a = stars[i];
@@ -971,7 +971,7 @@ function SiteBackground() {
 
       stars.forEach((star, i) => {
         const twinkle = 0.16 + Math.sin(frame * star.s + i) * 0.16;
-        ctx.fillStyle = `rgba(255,255,255,${Math.max(0.16, star.a + twinkle)})`;
+        ctx.fillStyle = `rgba(118,96,58,${Math.max(0.12, star.a * 0.42 + twinkle * 0.4)})`;
         ctx.beginPath();
         ctx.arc(star.x * w, star.y * h, star.r, 0, Math.PI * 2);
         ctx.fill();
@@ -998,8 +998,8 @@ function SiteBackground() {
         const tailY = startY + streak.len * 0.72;
 
         const grad = ctx.createLinearGradient(startX, startY, tailX, tailY);
-        grad.addColorStop(0, `rgba(255,246,214,${Math.min(1, streak.alpha + 0.12)})`);
-        grad.addColorStop(0.24, `rgba(240,201,95,${streak.alpha})`);
+        grad.addColorStop(0, `rgba(255,245,220,${Math.min(1, streak.alpha + 0.08)})`);
+        grad.addColorStop(0.24, `rgba(224,183,84,${streak.alpha * 0.72})`);
         grad.addColorStop(1, 'rgba(212,175,55,0)');
 
         ctx.strokeStyle = grad;
@@ -1010,15 +1010,15 @@ function SiteBackground() {
         ctx.stroke();
 
         const glow = ctx.createRadialGradient(startX, startY, 0, startX, startY, 7);
-        glow.addColorStop(0, `rgba(255,248,228,${Math.min(1, streak.alpha + 0.08)})`);
-        glow.addColorStop(0.55, `rgba(232,196,96,${streak.alpha * 0.6})`);
+        glow.addColorStop(0, `rgba(255,250,235,${Math.min(1, streak.alpha + 0.06)})`);
+        glow.addColorStop(0.55, `rgba(224,183,84,${streak.alpha * 0.45})`);
         glow.addColorStop(1, 'rgba(212,175,55,0)');
         ctx.fillStyle = glow;
         ctx.beginPath();
         ctx.arc(startX, startY, 3.8, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = `rgba(255,250,240,${Math.min(1, streak.alpha + 0.18)})`;
+        ctx.fillStyle = `rgba(255,248,232,${Math.min(1, streak.alpha + 0.1)})`;
         ctx.beginPath();
         ctx.arc(startX, startY, streak.size * 1.05, 0, Math.PI * 2);
         ctx.fill();
@@ -1043,9 +1043,9 @@ function SiteBackground() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,4,8,0.78),rgba(5,5,5,0.96)),radial-gradient(circle_at_top,rgba(212,175,55,0.1),transparent_20%)]" />
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-95" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_15%,rgba(212,175,55,0.08),transparent_16%),radial-gradient(circle_at_88%_12%,rgba(212,175,55,0.08),transparent_20%),radial-gradient(circle_at_24%_72%,rgba(212,175,55,0.05),transparent_18%),radial-gradient(circle_at_90%_85%,rgba(212,175,55,0.06),transparent_18%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,251,244,0.76),rgba(245,235,220,0.88)),radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_22%)]" />
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-72" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_15%,rgba(212,175,55,0.12),transparent_16%),radial-gradient(circle_at_88%_12%,rgba(255,255,255,0.38),transparent_18%),radial-gradient(circle_at_24%_72%,rgba(212,175,55,0.09),transparent_18%),radial-gradient(circle_at_90%_85%,rgba(212,175,55,0.1),transparent_18%)]" />
     </div>
   );
 }

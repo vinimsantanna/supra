@@ -5,15 +5,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#060606',
-        foreground: '#f5f0e8',
+        background: '#f6efe3',
+        foreground: '#251b10',
         gold: '#d4af37',
         goldSoft: '#f4df9f',
-        muted: '#a0a0a7'
+        muted: '#736856'
       },
       boxShadow: {
-        gold: '0 20px 60px rgba(212,175,55,0.12)',
-        soft: '0 10px 30px rgba(0,0,0,0.35)'
+        gold: '0 24px 70px rgba(212,175,55,0.16)',
+        soft: '0 18px 40px rgba(102,78,31,0.12)'
       },
       animation: {
         marquee: 'marquee 42s linear infinite',
