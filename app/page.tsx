@@ -522,11 +522,11 @@ function ResultsAccelerator() {
                     alt={item.title}
                     className={`h-full w-full ${item.objectClassName} transition duration-700 group-hover:scale-[1.035]`}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,8,5,0.88)] via-[rgba(10,8,5,0.26)] to-[rgba(10,8,5,0.1)]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,5,3,0.96)] via-[rgba(8,7,4,0.48)] to-[rgba(10,8,5,0.14)]" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                     <div className="h-px w-16 bg-gradient-to-r from-gold via-[#f2deaa] to-transparent" />
                     <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-2 max-w-sm text-sm leading-6 text-white/76">{item.description}</p>
+                    <p className="mt-2 max-w-sm text-sm leading-6 text-white/92 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">{item.description}</p>
                   </div>
                 </div>
               </div>
