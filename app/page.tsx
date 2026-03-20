@@ -42,7 +42,7 @@ import {
 const WHATSAPP_URL =
   'https://api.whatsapp.com/send/?phone=5573988548309&text=Quero%20multiplicar%20meu%20faturamento!';
 const INSTAGRAM_URL = 'https://instagram.com/supra.midia';
-const LOGO_URL = '/assets/brand/supra-logo.webp';
+const LOGO_URL = '/assets/brand/supra-logo-full.webp';
 const FOUNDER_VINI_URL = '/assets/founders/vinicius.webp';
 const FOUNDER_EVE_URL = '/assets/founders/evellin.webp';
 
@@ -286,9 +286,9 @@ function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#d9c7a6]/70 bg-[#fbf7ef]/72 backdrop-blur-2xl">
-      <Container className="flex h-20 items-center justify-between lg:h-24">
-        <a href="#top" className="inline-flex items-center">
-          <img src={LOGO_URL} alt="Supra" className="h-[72px] w-auto lg:h-24" />
+      <Container className="relative flex h-20 items-center justify-end lg:h-24 lg:justify-between">
+        <a href="#top" className="absolute left-1/2 inline-flex -translate-x-1/2 items-center lg:static lg:translate-x-0">
+          <img src={LOGO_URL} alt="Supra" className="h-[72px] w-auto max-w-[220px] lg:h-24 lg:max-w-[360px]" />
         </a>
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([label, href]) => (
