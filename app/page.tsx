@@ -543,7 +543,7 @@ function ResultsAccelerator() {
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                     <div className="h-px w-16 bg-gradient-to-r from-gold via-[#f2deaa] to-transparent" />
                     <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-2 max-w-sm text-sm leading-6 text-white/92 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">{item.description}</p>
+                    <p className="mt-2 max-w-sm text-sm leading-6 text-[#fff6e6] drop-shadow-[0_3px_14px_rgba(0,0,0,0.58)]">{item.description}</p>
                   </div>
                 </div>
               </div>
