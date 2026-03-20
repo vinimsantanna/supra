@@ -22,6 +22,14 @@ function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateViewportMode = () => setIsMobile(window.innerWidth < 768);
+    updateViewportMode();
+    window.addEventListener('resize', updateViewportMode);
+    return () => window.removeEventListener('resize', updateViewportMode);
+  }, []);
 
   useEffect(() => {
     const node = ref.current;
@@ -40,12 +48,19 @@ function ScrollReveal({
           io.disconnect();
         }
       },
-      { threshold, rootMargin: '0px 0px -10% 0px' }
+      {
+        threshold: isMobile ? Math.min(threshold, 0.01) : threshold,
+        rootMargin: isMobile ? '0px 0px 24% 0px' : '0px 0px 12% 0px',
+      }
     );
 
     io.observe(node);
     return () => io.disconnect();
-  }, [threshold]);
+  }, [isMobile, threshold]);
+
+  const resolvedDelay = isMobile ? Math.min(delay * 0.18, 60) : delay;
+  const resolvedY = isMobile ? Math.min(y, 10) : y;
+  const resolvedScale = isMobile ? Math.max(scale, 0.996) : scale;
 
   return (
     <div
@@ -53,9 +68,9 @@ function ScrollReveal({
       className={`scroll-reveal ${visible ? 'is-visible' : ''} ${className}`}
       style={
         {
-          '--reveal-delay': `${delay}ms`,
-          '--reveal-y': `${y}px`,
-          '--reveal-scale': scale,
+          '--reveal-delay': `${resolvedDelay}ms`,
+          '--reveal-y': `${resolvedY}px`,
+          '--reveal-scale': resolvedScale,
           ...style,
         } as CSSProperties
       }
