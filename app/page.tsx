@@ -286,9 +286,9 @@ function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#d9c7a6]/70 bg-[#fbf7ef]/72 backdrop-blur-2xl">
-      <Container className="relative flex h-20 items-center justify-end lg:h-24 lg:justify-between">
+      <Container className="relative flex h-32 items-center justify-end lg:h-24 lg:justify-between">
         <a href="#top" className="absolute left-1/2 inline-flex -translate-x-1/2 items-center lg:static lg:translate-x-0">
-          <img src={LOGO_URL} alt="Supra" className="h-[72px] w-auto max-w-[220px] lg:h-24 lg:max-w-[360px]" />
+          <img src={LOGO_URL} alt="Supra" className="h-[130px] w-auto max-w-[396px] lg:h-24 lg:max-w-[360px]" />
         </a>
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map(([label, href]) => (
