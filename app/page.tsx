@@ -515,7 +515,7 @@ function Audience() {
 
 function ResultsAccelerator() {
   return (
-    <section className="relative py-20 md:py-28">
+    <section id="resultados-camadas" className="relative py-20 md:py-28">
       <Container>
         <ScrollReveal y={18} scale={0.992}>
           <div className="mx-auto max-w-3xl text-center">
@@ -1245,7 +1245,7 @@ function RocketLaunchScene() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const trigger = document.getElementById('provas');
+    const trigger = document.getElementById('resultados-camadas');
     const footer = document.getElementById('site-footer');
     if (!trigger || !footer) return;
 
@@ -1407,7 +1407,7 @@ function RocketLaunchScene() {
 
       if (engaged) {
         launched = true;
-        launchProgress = Math.min(1, launchProgress + 0.0029);
+        launchProgress = Math.min(1, launchProgress + 0.00203);
       }
 
       if (!launched) {
