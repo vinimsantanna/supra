@@ -787,30 +787,19 @@ function FeaturedTestimonials() {
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
           {featuredTestimonials.map((item, index) => (
             <ScrollReveal key={item.company} delay={index * 120} y={24} scale={0.985}>
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-[32px] border border-[#caa24b]/35 bg-[linear-gradient(180deg,rgba(20,17,13,0.96),rgba(10,9,7,0.98))] p-4 shadow-[0_28px_80px_rgba(18,13,7,0.34)] transition duration-500 hover:-translate-y-1 hover:border-gold/55">
+              <article className="group relative overflow-hidden rounded-[32px] border border-[#caa24b]/35 bg-[linear-gradient(180deg,rgba(20,17,13,0.96),rgba(10,9,7,0.98))] p-4 shadow-[0_28px_80px_rgba(18,13,7,0.34)] transition duration-500 hover:-translate-y-1 hover:border-gold/55">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,175,55,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.08),transparent_24%)] opacity-90" />
-                <div className="relative flex h-full flex-col">
-                  <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-black/30">
-                    <div className="absolute left-4 top-4 z-10 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-[rgba(20,17,13,0.78)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f0ddb0] backdrop-blur-md">
-                      <PlayCircle className="h-3.5 w-3.5" />
-                      Depoimento em vídeo
-                    </div>
-                    <video controls playsInline preload="metadata" poster={item.poster} className="aspect-video w-full bg-black/40 object-cover">
+                <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-black/40">
+                  <div className="flex justify-center bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_55%)] p-4 md:p-5">
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster={item.poster}
+                      className="aspect-[9/16] w-full max-w-[380px] rounded-[20px] bg-black object-contain shadow-[0_18px_40px_rgba(0,0,0,0.35)]"
+                    >
                       <source src={item.videoUrl} type="video/mp4" />
                     </video>
-                  </div>
-                  <div className="flex flex-1 flex-col px-2 pb-2 pt-6">
-                    <Quote className="h-10 w-10 text-gold/28" />
-                    <blockquote className="mt-5 text-2xl font-semibold leading-tight text-[#fff8ea]">
-                      “{item.quote}”
-                    </blockquote>
-                    <p className="mt-5 text-sm leading-7 text-[#d5cec2] md:text-[15px]">{item.testimonial}</p>
-                    <div className="mt-8 border-t border-white/10 pt-5">
-                      <p className="text-base font-semibold text-white">{item.name}</p>
-                      <p className="mt-1 text-sm text-[#d4c6a8]">
-                        {item.role} <span className="text-white/30">•</span> {item.company}
-                      </p>
-                    </div>
                   </div>
                 </div>
               </article>
