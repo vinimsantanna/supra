@@ -899,7 +899,7 @@ function Testimonials() {
               {testimonials.map((item, index) => (
                 <div key={item.name} className={`w-full flex-shrink-0 p-2 ${visible === 3 ? 'xl:w-1/3' : visible === 2 ? 'md:w-1/2' : 'w-full'}`}>
                   <ScrollReveal delay={index * 90} y={20}>
-                  <Card className="flex h-full flex-col">
+                  <Card className="flex h-full min-h-[520px] flex-col xl:min-h-[560px]">
                     <div className="mb-6 flex items-center justify-between">
                       <img src={item.avatar} alt={item.name} className="h-16 w-16 rounded-full border border-gold/30 object-cover object-top" />
                       <Quote className="h-10 w-10 text-gold/25" />
